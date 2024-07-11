@@ -49,21 +49,8 @@ userSchema.pre('save', function(next) {
     // Capitalize the first letter of each word in the fullName
     user.fullName = capitalizeEachWord(user.fullName);
 
-    // const today = new Date();
-    // const birthDate = new Date(user.dateOfBirth);
-    // let age = today.getFullYear() - birthDate.getFullYear();
-    // const monthDifference = today.getMonth() - birthDate.getMonth();
-
-    // if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
-    //     age--;
-    // }
-
-    // if (age < 18) {
-    //     const error = new Error('User must be at least 18 years old');
-    //     next(error);
-    // } else {
-        next();
-    // }
+    next();
+  
 });
 
 // Function to capitalize the first letter of each word in a string

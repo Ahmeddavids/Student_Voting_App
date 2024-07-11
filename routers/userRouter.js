@@ -14,7 +14,7 @@ router.route('/users/sign-up').post(userSignUp)
 
 router.route('/user/log-in').post(userLogin)
 
-router.route('/user').get(getAUser)
+router.route('/user/:id').get(getAUser)
 
 // router.route('/log-out/:userId').post(authenticate, signOut)
 

@@ -116,7 +116,7 @@ exports.getUsersThatVoted = async (req, res) => {
     }
 };
 
-// Function to get all users
+// Function to get a users
 exports.getAUser = async (req, res) => {
     try {
         const id = req.params.id
@@ -125,5 +125,17 @@ exports.getAUser = async (req, res) => {
     } catch (error) {
         console.log(error.message)
         res.status(500).json({ message: 'An error occurred while fetching user data.' });
+    }
+};
+
+// Get one candidate
+exports.getOneCandidate = async (req, res) => {
+    try {
+        const id = req.params.id
+        const candidate = await candidateModel.findById(id);
+        res.status(200).json({ data: candidate });
+    } catch (error) {
+        console.log(error.message)
+        res.status(500).json({ message: 'An error occurred while fetching candidate data.' });
     }
 };
