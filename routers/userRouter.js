@@ -10,9 +10,9 @@ router.get('/users', getAllUsers);
 router.get('/users/voted', getUsersThatVoted);
 
 
-router.route('/sign-up').post(userSignUp)
+router.route('/users/sign-up').post(userSignUp)
 
-router.route('/log-in').post(userLogin)
+router.route('/user/log-in').post(userLogin)
 
 router.route('/user').get(getAUser)
 
