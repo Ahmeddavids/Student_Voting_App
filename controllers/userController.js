@@ -78,7 +78,7 @@ exports.userSignUp = async (req, res) => {
         const mailOptions = {
             email: user.email,
             subject: "Verify your account",
-            html: `Please click on the link to verify your email: <a href="${req.protocol}://${req.get("host")}/api/users/verify-email/${token}">Verify Email</a>`,
+            html: `Please click on the link to verify your email: <a href="https://student-voting-app.onrender.com/api/users/verify-email/${token}">Verify Email</a>`,
         };
 
         // save the user
@@ -186,7 +186,7 @@ exports.resendVerificationEmail = async (req, res) => {
         const mailOptions = {
             email: user.email,
             subject: "Email Verification",
-            html: `Please click on the link to verify your email: <a href="${req.protocol}://${req.get("host")}/api/users/verify-email/${token}">Verify Email</a>`,
+            html: `Please click on the link to verify your email: <a href="https://student-voting-app.onrender.com/api/users/verify-email/${token}">Verify Email</a>`,
         };
 
         await sendEmail(mailOptions);
@@ -226,7 +226,7 @@ exports.forgotPassword = async (req, res) => {
         const mailOptions = {
             email: user.email,
             subject: "Password Reset",
-            html: `Please click on the link to reset your password: <a href="${req.protocol}://${req.get("host")}/api/users/reset-password/${resetToken}">Reset Password</a> link expires in 30 minutes`,
+            html: `Please click on the link to reset your password: <a href="https://student-voting-app.onrender.com/api/users/reset-password/${resetToken}">Reset Password</a> link expires in 30 minutes`,
         };
 
         await sendEmail(mailOptions);
