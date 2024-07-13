@@ -139,7 +139,7 @@ exports.verifyEmail = async (req, res) => {
 
         res.status(200).json({
             message: "User verified successfully",
-            data: user,
+            // data: user,
         })
         // res.status( 200 ).redirect( `${req.protocol}://${req.get("host")}/api/log-in` );
 
