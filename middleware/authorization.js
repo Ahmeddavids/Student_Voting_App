@@ -43,7 +43,7 @@ const authentication = async (req, res, next) => {
 
 const authenticate = async (req, res, next) => {
     try {
-        const user = await userModel.findById(req.body.userId)
+        const user = await userModel.findById(req.params.userId)
 
         if(!user) {
             return res.status(404).json({

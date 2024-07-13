@@ -14,7 +14,7 @@ router.get('/all', candidateController.getAllCandidates);
 router.get('/by-votes', candidateController.getCandidatesByVotes);
 
 // Vote for a candidate route
-router.post('/vote', authenticate, candidateController.voteCandidate);
+router.post('/vote/:userId/:candidateId', authenticate, candidateController.voteCandidate);
 
 // Get one candidate route
 router.get('/one/:id', candidateController.getOneCandidate);

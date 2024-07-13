@@ -60,7 +60,7 @@ exports.getCandidatesByVotes = async (req, res) => {
 // Function to vote for a candidate
 exports.voteCandidate = async (req, res) => {
     try {
-        const { userId, candidateId } = req.body;
+        const { userId, candidateId } = req.params;
 
         // Find user by ID
         const user = await userModel.findById(userId);
