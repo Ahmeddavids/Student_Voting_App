@@ -13,6 +13,9 @@ router.get('/all', candidateController.getAllCandidates);
 // Get all candidates sorted by highest votes route
 router.get('/by-votes', candidateController.getCandidatesByVotes);
 
+// Get all candidates sorted by highest votes route
+router.get('/voted', candidateController.getUsersThatVoted);
+
 // Vote for a candidate route
 router.post('/vote/:userId/:candidateId', authenticate, candidateController.voteCandidate);
 
