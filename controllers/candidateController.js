@@ -38,7 +38,7 @@ exports.signup = async (req, res) => {
 exports.getAllCandidates = async (req, res) => {
     try {
         const candidates = await candidateModel.find();
-        res.status(200).json(candidates.length, candidates);
+        res.status(200).json({total: candidates.length, candidates});
     } catch (error) {
         console.log(error.message)
         res.status(500).json({ message: 'An error occurred while fetching candidates.' });
