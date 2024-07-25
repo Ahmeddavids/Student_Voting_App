@@ -54,7 +54,7 @@ const authenticate = async (req, res, next) => {
 
         if(!userToken) {
             return res.status(400).json({
-                message: 'Please log in to continue.'
+                message: 'Please log in and try again.'
             })
         }
 
@@ -70,7 +70,7 @@ const authenticate = async (req, res, next) => {
 
     } catch (error) {
         if (error instanceof jwt.JsonWebTokenError) {
-            return res.status(400).json({
+            return res.status(401).json({
                 message: "Session timed-out, please log in to continue."
             });
         }
