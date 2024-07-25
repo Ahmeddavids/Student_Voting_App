@@ -134,6 +134,7 @@ exports.getOneCandidate = async (req, res) => {
     try {
         const id = req.params.id
         const candidate = await candidateModel.findById(id);
+        if (!user) { return res.status(404).json({ message: 'Candidate not found' }) }
         res.status(200).json({ data: candidate });
     } catch (error) {
         console.log(error.message)
