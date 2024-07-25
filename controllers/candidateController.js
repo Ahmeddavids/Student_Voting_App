@@ -4,7 +4,7 @@ const userModel = require('../models/userModel');
 exports.signup = async (req, res) => {
     try {
         const { fullName, partyName } = req.body;
-        
+
         // Validate required fields
         if (!fullName || !partyName) {
             return res.status(400).json({ message: 'Full name and party name are required.' });
@@ -13,7 +13,7 @@ exports.signup = async (req, res) => {
         if (!req.files['partyImage'] || !req.files['candidateImage']) {
             return res.status(400).json({ message: 'Both party image and candidate image are required.' });
         }
-        
+
         // Prepare candidate data
         const candidateData = {
             fullName,
@@ -25,9 +25,9 @@ exports.signup = async (req, res) => {
         // Create and save the candidate
         const newCandidate = new candidateModel(candidateData);
         await newCandidate.save();
-        
+
         res.status(201).json({ message: 'Candidate registered successfully.', candidate: newCandidate });
-            console.log(newCandidate)
+        console.log(newCandidate)
     } catch (error) {
         console.log(error.message)
         res.status(500).json({ message: 'An error occurred while registering the candidate.' });
@@ -38,7 +38,7 @@ exports.signup = async (req, res) => {
 exports.getAllCandidates = async (req, res) => {
     try {
         const candidates = await candidateModel.find();
-        res.status(200).json({total: candidates.length, candidates});
+        res.status(200).json({ total: candidates.length, candidates });
     } catch (error) {
         console.log(error.message)
         res.status(500).json({ message: 'An error occurred while fetching candidates.' });
@@ -121,6 +121,7 @@ exports.getAUser = async (req, res) => {
     try {
         const id = req.params.id
         const user = await userModel.findById(id);
+        if (!user) { return res.status(404).json({ message: 'User not found' }) }
         res.status(200).json({ data: user });
     } catch (error) {
         console.log(error.message)
