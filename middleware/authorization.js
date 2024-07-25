@@ -53,7 +53,7 @@ const authenticate = async (req, res, next) => {
         const userToken = user.token
 
         if(!userToken) {
-            return res.status(400).json({
+            return res.status(404).json({
                 message: 'No Authorization found'
             })
         }
@@ -70,7 +70,7 @@ const authenticate = async (req, res, next) => {
 
     } catch (error) {
         if (error instanceof jwt.JsonWebTokenError) {
-            return res.status(404).json({
+            return res.status(400).json({
                 message: "Session timed-out, please log in to continue."
             });
         }
