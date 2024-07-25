@@ -1,6 +1,7 @@
 const express = require('express');
 const { userSignUp, userLogin, signOut, verifyEmail, resendVerificationEmail, changePassword, resetPassword, forgotPassword } = require('../controllers/userController');
 const { getAllUsers, getUsersThatVoted, getAUser } = require('../controllers/candidateController');
+const { authenticate } = require('../middleware/authorization');
 const router = express.Router();
 
 // Get all users route
@@ -16,7 +17,7 @@ router.route('/user/log-in').post(userLogin)
 
 router.route('/user/:id').get(getAUser)
 
-// router.route('/log-out/:userId').post(authenticate, signOut)
+router.route('/log-out/:userId').post(authenticate, signOut)
 
 router.route("/users/verify-email/:token")
     .get(verifyEmail);
