@@ -75,16 +75,16 @@ exports.userSignUp = async (req, res) => {
         user.token = token
 
         // send verification email
-        const mailOptions = {
-            email: user.email,
-            subject: "Verify your account",
-            html: `Please click on the link to verify your email: <a href="https://student-voting-app.onrender.com/api/users/verify-email/${token}">Verify Email</a>`,
-        };
+        // const mailOptions = {
+        //     email: user.email,
+        //     subject: "Verify your account",
+        //     html: `Please click on the link to verify your email: <a href="https://student-voting-app.onrender.com/api/users/verify-email/${token}">Verify Email</a>`,
+        // };
 
         // save the user
         await user.save();
 
-        await sendEmail(mailOptions);
+        // await sendEmail(mailOptions);
 
         // return a response
         res.status(201).json({
