@@ -317,11 +317,11 @@ exports.userLogin = async (req, res) => {
         }
 
         // Check if the user if verified
-        if (!checkUser.isVerified) {
-            return res.status(404).json({
-                message: `User with this email: ${email} is not verified.`
-            })
-        }
+        // if (!checkUser.isVerified) {
+        //     return res.status(404).json({
+        //         message: `User with this email: ${email} is not verified.`
+        //     })
+        // }
 
         const token = jwt.sign({
             userId: checkUser._id,
