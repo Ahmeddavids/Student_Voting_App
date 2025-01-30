@@ -5,13 +5,13 @@ const { authenticate } = require('../middleware/authorization');
 const router = express.Router();
 
 // Get all users route
-router.get('/users', getAllUsers);
+router.get('/user', getAllUsers);
 
 // Get all users that voted route
-router.get('/users/voted', getUsersThatVoted);
+router.get('/user/voted', getUsersThatVoted);
 
 
-router.route('/users/sign-up').post(userSignUp)
+router.route('/user/sign-up').post(userSignUp)
 
 router.route('/user/log-in').post(userLogin)
 
@@ -19,19 +19,19 @@ router.route('/user/:id').get(getAUser)
 
 router.route('/log-out/:userId').post(authenticate, signOut)
 
-router.route("/users/verify-email/:token")
+router.route("/user/verify-email/:token")
     .get(verifyEmail);
 
-router.route("/users/resend-verification-email")
+router.route("/user/resend-verification-email")
     .post(resendVerificationEmail);
 
-router.route('/users/change-password/:token')
+router.route('/user/change-password/:token')
     .post(changePassword);
 
-router.route('/users/reset-password/:token')
+router.route('/user/reset-password/:token')
     .post(resetPassword);
 
-router.route('/users/forgot-password')
+router.route('/user/forgot-password')
     .post(forgotPassword);
 
 module.exports = router;
